@@ -23,6 +23,13 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- <script type="module" src="/src/main.tsx"></script> -->
+    <script type="module">
+      import '@vis.gl/react-google-maps/examples.css';
+      import '@vis.gl/react-google-maps/examples.js';
+      import {renderToDom} from '/src/main.tsx';
+
+      renderToDom(document.querySelector('#root'));
+    </script>
   </body>
 </html>
