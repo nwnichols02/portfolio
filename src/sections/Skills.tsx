@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import BentoGrid from '../components/BentoGrid'
 import IconCloud from '@/components/ui/icon-cloud'
+import Iphone15Pro from '@/components/ui/iphone-15-pro'
 
 const Skills: React.FC = () => {
 
@@ -55,6 +56,10 @@ const Skills: React.FC = () => {
       <div className="relative w-full max-w-3xl h-[60vh] flex items-center justify-center overflow-hidden rounded-lg">
         <IconCloud iconSlugs={slugs} />
       </div>
+      <Iphone15Pro
+        // className="size-full"
+        src="https://media.idownloadblog.com/wp-content/uploads/2022/11/Call-on-iPhone-Lock-Screen-758x1536.jpg"
+      />
     </div>
   )
 }
