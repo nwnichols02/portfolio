@@ -50,9 +50,9 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <div className=" items-center justify-center flex flex-row">
+    <div className="flex flex-col items-center justify-center w-full py-8">
       <h2 className="text-3xl font-bold mb-8">Skills</h2>
-      <div className="relative flex size-full h-100vh w-full items-center justify-center overflow-hidden rounded-lg bg-white px-20 pb-20 pt-8 ">
+      <div className="relative w-full max-w-3xl h-[60vh] flex items-center justify-center overflow-hidden rounded-lg">
         <IconCloud iconSlugs={slugs} />
       </div>
     </div>

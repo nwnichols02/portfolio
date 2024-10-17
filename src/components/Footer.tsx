@@ -117,7 +117,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
     <>
       <div className="relative overflow-hidden">
         <div className="relative h-32 bg-gradient-to-b from-background flex to-transparent align-center justify-center">
-          <WordFadeIn words='What People Are Saying About Nate' />
+          <WordFadeIn words='What People Are Saying About Nate...' />
         </div>
         <div className="relative flex align-center justify-center">
           <MarqueeDemo />
