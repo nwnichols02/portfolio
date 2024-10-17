@@ -2,6 +2,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import WeldingAnimation from '../components/WeldingAnimation'
 import "../styles/screenOverlay.css"
+import GradualSpacing from '@/components/ui/gradual-spacing'
+import WordPullUp from '@/components/ui/word-pull-up'
 
 const Home: React.FC = () => {
   return (
@@ -18,11 +20,13 @@ const Home: React.FC = () => {
       <WeldingAnimation />
       <div className="absolute inset-0 flex flex-col justify-start items-start text-left px-4 pt-20 sm:pt-24 md:pt-28">
         <div className="relative p-6 rounded-lg mt-16 sm:mt-20 md:mt-24">
+          {/* <WordPullUp words="Engineering Robust Web Solutions" />
+          <WordPullUp words="Specializing in Micro-Frontends and Scalable Architecture" /> */}
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 3 }}
           >
             Engineering Robust Web Solutions
           </motion.h1>
@@ -30,7 +34,7 @@ const Home: React.FC = () => {
             className="text-xl md:text-2xl lg:text-3xl mb-8 text-gray-300"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 3, delay: 0.2 }}
           >
             Specializing in Micro-Frontends and Scalable Architecture
           </motion.h2>

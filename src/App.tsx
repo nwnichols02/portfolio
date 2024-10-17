@@ -14,7 +14,7 @@ import Globe from './components/Globe'
 
 const queryClient = new QueryClient()
 
-const sections = ['home', 'about', 'projects', 'skills', 'experience', 'contact', 'globe', 'footer']
+const sections = ['home', 'about', 'projects', 'skills', 'experience', 'footer']
 
 const RootComponent = () => {
   const [activeSection, setActiveSection] = useState(0)
@@ -78,8 +78,8 @@ const RootComponent = () => {
               {section === 'projects' && <Projects />}
               {section === 'skills' && <Skills />}
               {section === 'experience' && <Experience />}
-              {section === 'contact' && <Contact />}
-              {section === 'globe' && <Globe userLocation={userLocation} />}
+              {/* {section === 'contact' && <Contact />} */}
+              {/* {section === 'globe' && <Globe userLocation={userLocation} />} */}
               {section === 'footer' && <Footer scrollToSection={scrollToSection} />}
             </div>
           ))}

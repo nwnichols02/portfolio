@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react-swc'
+import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
@@ -12,7 +13,8 @@ export default defineConfig(({mode}) => {
     resolve: {
       alias: {
         '@vis.gl/react-google-maps/examples.js':
-          'https://visgl.github.io/react-google-maps/scripts/examples.js'
+          'https://visgl.github.io/react-google-maps/scripts/examples.js',
+          "@": path.resolve(__dirname, "./src"),
       }
     }
   };

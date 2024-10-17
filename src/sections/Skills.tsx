@@ -1,54 +1,60 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import BentoGrid from '../components/BentoGrid'
-
-const skillCategories = [
-  {
-    name: 'Front-end',
-    skills: ['React', 'React Native', 'TypeScript', 'JavaScript', 'HTML', 'CSS']
-  },
-  {
-    name: 'Back-end',
-    skills: ['Node.js', 'GraphQL', 'REST APIs']
-  },
-  {
-    name: 'Tools',
-    skills: ['Vite', 'Webpack', 'Module Federation', 'Storybook', 'Jest', 'React Testing Library']
-  },
-  {
-    name: 'Cloud',
-    skills: ['AWS']
-  }
-]
+import IconCloud from '@/components/ui/icon-cloud'
 
 const Skills: React.FC = () => {
+
+  const slugs = [
+    "typescript",
+    "javascript",
+    "react",
+    "html5",
+    "css3",
+    "nodedotjs",
+    "express",
+    "prisma",
+    "azure",
+    "postgresql",
+    "firebase",
+    "vercel",
+    "testinglibrary",
+    "jest",
+    "cypress",
+    "docker",
+    "git",
+    "vite",
+    "webpack",
+    "storybook",
+    "deno",
+    "bun",
+    "pnpm",
+    "prettier",
+    "eslint",
+    "mui",
+    "tailwindcss",
+    "mockserviceworker",
+    "vitest",
+    "leaflet",
+    "esri",
+    "framer",
+    "arcgis",
+    "playwright",
+    "reactrouter",
+    "axios",
+    "github",
+    "visualstudiocode",
+    "figma",
+    "go",
+    "dotnet"
+  ];
+
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className=" items-center justify-center flex flex-row">
       <h2 className="text-3xl font-bold mb-8">Skills</h2>
-      <BentoGrid>
-        {skillCategories.map((category, index) => (
-          <motion.div
-            key={index}
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-black mb-4">{category.name}</h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <span
-                    key={skillIndex}
-                    className="bg-black text-black-200 text-sm px-3 py-1 rounded-full"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </BentoGrid>
+      <div className="relative flex size-full h-100vh w-full items-center justify-center overflow-hidden rounded-lg bg-white px-20 pb-20 pt-8 ">
+        <IconCloud iconSlugs={slugs} />
+      </div>
     </div>
   )
 }

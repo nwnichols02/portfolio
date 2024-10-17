@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { ModeToggle } from './ui/mode-toggle'
 
-const sections = ['home', 'about', 'projects', 'skills', 'experience', 'contact']
+const sections = ['home', 'about', 'projects', 'skills', 'experience']
 
 interface AppBarProps {
   scrollToSection: (index: number) => void
@@ -27,7 +28,9 @@ const AppBar: React.FC<AppBarProps> = ({ scrollToSection }) => {
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </NavLink>
           ))}
+          <ModeToggle />
         </div>
+
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-foreground">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
