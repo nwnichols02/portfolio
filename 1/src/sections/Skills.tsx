@@ -56,10 +56,10 @@ const Skills: React.FC = () => {
       <div className="relative w-full max-w-3xl h-[60vh] flex items-center justify-center overflow-hidden rounded-lg">
         <IconCloud iconSlugs={slugs} />
       </div>
-      <Iphone15Pro
+      {/* <Iphone15Pro
         // className="size-full"
         src="https://media.idownloadblog.com/wp-content/uploads/2022/11/Call-on-iPhone-Lock-Screen-758x1536.jpg"
-      />
+      /> */}
     </div>
   )
 }
