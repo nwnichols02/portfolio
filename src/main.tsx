@@ -2,7 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { ThemeProvider } from './contexts/ThemeProvider.tsx';
+import '@/i18n'
+import { ThemeProvider } from './contexts/ThemeProvider.tsx'
 
 export function renderToDom(container: HTMLElement) {
   const root = createRoot(container);

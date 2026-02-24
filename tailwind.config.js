@@ -9,6 +9,11 @@ export default {
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'brand-black': '#0a0a0a',
+				'brand-gray': '#f5f5f5',
+				'brand-text': '#1a1a1a',
+				'brand-muted': '#666666',
+				'accent-weld': '#FFD700',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -49,7 +54,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif']
+				sans: ['Inter', 'sans-serif'],
+				mono: ['JetBrains Mono', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -81,11 +87,23 @@ export default {
 						opacity: 0,
 					},
 				},
+				spark: {
+					'0%': { opacity: '0', transform: 'scale(0.5)' },
+					'50%': { opacity: '1', transform: 'scale(1.2)' },
+					'100%': { opacity: '0', transform: 'scale(0.5)' },
+				},
+				glow: {
+					'0%, 100%': { opacity: '0.5' },
+					'50%': { opacity: '1' },
+				},
 			},
 			animation: {
 				marquee: 'marquee var(--duration) infinite linear',
 				'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
 				meteor: 'meteor 5s linear infinite',
+				'weld-spark': 'spark 0.5s linear infinite',
+				'weld-glow': 'glow 2s ease-in-out infinite',
+				'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 			}
 		}
 	},

@@ -1,14 +1,42 @@
+/* =============================================================================
+   EXISTING (CLASSIC) - preserved, commented out.
+   Uncomment to restore view-center-marker styling for map-3d.
+   ============================================================================= */
+
+/*
 .view-center-marker {
-    width: 0;
-    height: 0;
-  }
-  
-  .view-center-marker .circle {
-    width: 10px;
-    height: 10px;
-    background-color: blue;
-    border: 1px solid black;
-    border-radius: 50%;
-    translate: -50% -50%;
-  }
-  
+  width: 0;
+  height: 0;
+}
+
+.view-center-marker .circle {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border: 1px solid black;
+  border-radius: 50%;
+  translate: -50% -50%;
+}
+*/
+
+/* =============================================================================
+   END EXISTING (CLASSIC)
+   ============================================================================= */
+
+/* =============================================================================
+   CURRENT (ACTIVE) - shared for wireframe and classic.
+   ============================================================================= */
+
+.view-center-marker {
+  width: 0;
+  height: 0;
+}
+
+.view-center-marker .circle {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border: 1px solid black;
+  border-radius: 50%;
+  translate: -50% -50%;
+}

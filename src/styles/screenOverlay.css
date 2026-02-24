@@ -1,3 +1,8 @@
+/* =============================================================================
+   EXISTING (CLASSIC) - preserved, commented out.
+   Used by classic Home hero. Uncomment to restore .hero-large and overlay styles.
+   ============================================================================= */
+
 /* .screen-overlay {
     top: 0;
     left: 0;
@@ -26,6 +31,7 @@
     }
   } */
 
+/*
 .hero-large {
     isolation: isolate;
     color: #fff;
@@ -150,4 +156,134 @@
     .hero-large h1 {
         font-size:1.875em
     }
+}
+*/
+
+/* =============================================================================
+   END EXISTING (CLASSIC)
+   ============================================================================= */
+
+/* =============================================================================
+   NEW / SHARED - add wireframe or shared styles below.
+   Active .hero-large rules below keep classic Home hero working; duplicate of
+   EXISTING block above (uncomment above and remove below to switch).
+   ============================================================================= */
+
+.hero-large {
+  isolation: isolate;
+  color: #fff;
+  z-index: 0;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-top: 180px !important;
+}
+
+@media (max-width: 768px) {
+  .hero-large {
+    padding-top: calc(80px / 2);
+    padding-bottom: calc(80px / 2);
+  }
+}
+
+@keyframes radial-anim {
+  0% { opacity: 0.2; }
+  70% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+.hero-large::before {
+  content: "";
+  background: #121212;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgb(18, 18, 18) 20%);
+  animation-name: radial-anim;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  position: fixed;
+  width: 200vw;
+  height: 300vh;
+  left: 47%;
+  bottom: 140px;
+  transform: translateX(-50%) translateY(50%);
+}
+
+.hero-large.is-visible .text-wrapper {
+  left: 0;
+  transition: left 1.5s ease;
+}
+
+.hero-large.is-visible .brands-wrapper {
+  opacity: 1;
+  transition: opacity 2s ease 0.5s;
+}
+
+.hero-large .splide__track--wrapper {
+  margin: -20px;
+}
+
+.hero-large .splide__track {
+  padding: 20px !important;
+}
+
+.hero-large .inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-large .inner::before,
+.hero-large .inner::after {
+  display: none;
+}
+
+.hero-large .text-wrapper {
+  max-width: 750px;
+  margin-bottom: 80px;
+  left: -50vw;
+  position: relative;
+}
+
+.hero-large .brands-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  opacity: 0;
+}
+
+.hero-large .brands-wrapper a {
+  display: flex;
+  opacity: 0.75;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.hero-large .brands-wrapper a:hover,
+.hero-large .brands-wrapper a:focus-visible {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.hero-large h4 {
+  color: var(--theme-brand-secondary, var(--theme-colour-orange, #ff4431));
+}
+
+.hero-large h1 {
+  color: #fff;
+  line-height: 1;
+  font-size: 4.5em;
+}
+
+.hero-large p {
+  max-width: 500px;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero-large h1 {
+    font-size: 1.875em;
+  }
 }

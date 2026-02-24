@@ -1,14 +1,44 @@
+/* =============================================================================
+   EXISTING (CLASSIC) - preserved, commented out.
+   Uncomment to restore camera-position-marker styling for map-3d.
+   ============================================================================= */
+
+/*
 .camera-position-marker svg {
-    --camera-heading: 0;
-  
-    transform-origin: 50% 0;
-    translate: -50% -50%;
-    rotate: calc(var(--camera-heading) * 1deg);
-  }
-  
-  .camera-position-marker path {
-    fill: red;
-    stroke: black;
-    stroke-width: 2;
-    vector-effect: non-scaling-stroke;
-  }
+  --camera-heading: 0;
+
+  transform-origin: 50% 0;
+  translate: -50% -50%;
+  rotate: calc(var(--camera-heading) * 1deg);
+}
+
+.camera-position-marker path {
+  fill: red;
+  stroke: black;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+*/
+
+/* =============================================================================
+   END EXISTING (CLASSIC)
+   ============================================================================= */
+
+/* =============================================================================
+   CURRENT (ACTIVE) - shared for wireframe and classic.
+   ============================================================================= */
+
+.camera-position-marker svg {
+  --camera-heading: 0;
+
+  transform-origin: 50% 0;
+  translate: -50% -50%;
+  rotate: calc(var(--camera-heading) * 1deg);
+}
+
+.camera-position-marker path {
+  fill: red;
+  stroke: black;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}

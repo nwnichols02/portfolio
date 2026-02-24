@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
+/* =============================================================================
+   EXISTING (CLASSIC) GLOBAL STYLES - preserved, commented out.
+   Uncomment to restore classic typography, scrollbar, and transition behavior.
+   =============================================================================
+
 html {
   scroll-behavior: smooth;
 }
@@ -9,7 +14,7 @@ body {
   @apply bg-background text-foreground font-sans;
 }
 
-/* Responsive text sizes */
+Responsive text sizes:
 h1 {
   @apply text-4xl md:text-5xl lg:text-6xl font-bold;
 }
@@ -26,7 +31,7 @@ p {
   @apply text-base md:text-lg;
 }
 
-/* Custom scrollbar for webkit browsers */
+Custom scrollbar for webkit browsers:
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -44,17 +49,17 @@ p {
   background: #888;
 }
 
-/* Optimize transitions for performance */
+Optimize transitions for performance:
 * {
   @apply transition-colors duration-200;
 }
 
-/* Improve performance for large DOM trees */
+Improve performance for large DOM trees:
 .will-change-transform {
   will-change: transform;
 }
 
-/* Optimize animations */
+Optimize animations:
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -64,6 +69,23 @@ p {
   animation: fadeIn 0.3s ease-in-out;
 }
 
+   ============================================================================= */
+
+/* =============================================================================
+   END EXISTING (CLASSIC) GLOBAL STYLES
+   ============================================================================= */
+
+/* =============================================================================
+   CURRENT (ACTIVE) - shared base for wireframe and classic.
+   ============================================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground font-sans;
+}
 
 @layer base {
   :root {
@@ -122,7 +144,6 @@ p {
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
@@ -130,4 +151,13 @@ p {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Mobile-first section padding: base = mobile, scale up for larger viewports */
+.section-padding-x {
+  @apply px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20;
+}
+
+.section-padding {
+  @apply px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20;
 }

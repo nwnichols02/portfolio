@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { ModeToggle } from './ui/mode-toggle'
 
@@ -28,6 +29,12 @@ const AppBar: React.FC<AppBarProps> = ({ scrollToSection }) => {
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </NavLink>
           ))}
+          <Link
+            to="/"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            New version
+          </Link>
           <ModeToggle />
         </div>
 
@@ -44,6 +51,12 @@ const AppBar: React.FC<AppBarProps> = ({ scrollToSection }) => {
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </NavLink>
           ))}
+          <Link
+            to="/"
+            className="block text-muted-foreground hover:text-foreground text-sm py-3 min-h-[44px] flex items-center transition-colors"
+          >
+            New version
+          </Link>
         </div>
       )}
     </header>
@@ -53,7 +66,7 @@ const AppBar: React.FC<AppBarProps> = ({ scrollToSection }) => {
 const NavLink: React.FC<{ onClick: () => void; children: React.ReactNode }> = ({ onClick, children }) => (
   <button
     onClick={onClick}
-    className="block md:inline-block text-foreground hover:text-secondary transition-colors mb-2 md:mb-0"
+    className="block md:inline-block text-foreground hover:text-secondary transition-colors mb-2 md:mb-0 min-h-[44px] md:min-h-0 flex items-center"
   >
     {children}
   </button>
