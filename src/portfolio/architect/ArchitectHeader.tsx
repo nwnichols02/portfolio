@@ -42,10 +42,10 @@ export default function ArchitectHeader() {
               onClick={() => handleNavClick('hero')}
               className="w-8 h-8 bg-black flex items-center justify-center text-white font-bold text-sm"
             >
-              AR
+              NN
             </button>
             <span className="font-mono text-xs tracking-wider uppercase hidden sm:block">
-              Senior Architect
+              Software Architect
             </span>
           </div>
 
@@ -85,9 +85,8 @@ export default function ArchitectHeader() {
       {/* Mobile Navigation Overlay */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center gap-8 transition-transform duration-300 md:hidden ${
-          menuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center gap-8 transition-transform duration-300 md:hidden ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <button
           type="button"

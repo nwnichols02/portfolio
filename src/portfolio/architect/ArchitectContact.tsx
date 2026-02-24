@@ -31,7 +31,7 @@ export default function ArchitectContact() {
           href="mailto:hello@architect.dev"
           className="inline-block text-2xl md:text-4xl border-b border-gray-700 hover:border-white hover:text-gray-200 transition-all pb-2 mb-16"
         >
-          hello@architect.dev
+          n8.work.dev@gmail.com
         </a>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left border-t border-gray-800 pt-12">
@@ -41,23 +41,13 @@ export default function ArchitectContact() {
             </h4>
             <ul className="space-y-2 text-sm text-gray-500">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/in/nathan-w-nichols" className="hover:text-white transition-colors">
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="https://github.com/nwnichols02" className="hover:text-white transition-colors">
                   GitHub
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Twitter / X
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Instagram
                 </a>
               </li>
             </ul>
@@ -78,7 +68,7 @@ export default function ArchitectContact() {
               Location
             </h4>
             <address className="text-sm text-gray-500 not-italic">
-              San Francisco, CA
+              Memphis, TN, USA
               <br />
               Remote Worldwide
             </address>
@@ -89,7 +79,7 @@ export default function ArchitectContact() {
         </div>
 
         <div className="mt-24 text-xs text-gray-700 flex justify-between items-center flex-wrap gap-4">
-          <span>© 2024 Senior Architect Portfolio. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Nathan Nichols. All rights reserved.</span>
           <a
             href="#hero"
             onClick={(e) => {

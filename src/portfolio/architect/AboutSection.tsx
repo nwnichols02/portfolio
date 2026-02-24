@@ -30,11 +30,11 @@ export default function AboutSection() {
         </div>
         <div className="lg:col-span-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="relative aspect-[3/4] bg-gray-200 overflow-hidden">
+            <div className="relative aspect-[3/4] bg-gray-200 overflow-hidden rounded-lg">
               <img
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg"
-                alt="Portrait"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                src="/nathan-photo.png"
+                alt="Nathan Nichols"
+                className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
               />
             </div>
             <div className="flex flex-col justify-between">

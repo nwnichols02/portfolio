@@ -15,13 +15,12 @@ export default function ArchitectHero() {
               BUILDER
             </span>
             <br />
-            MAKER
+            OPERATOR
           </h1>
         </div>
         <div className="lg:col-span-4 pb-4 lg:pb-12">
           <p className="text-xl text-gray-600 font-light leading-relaxed mb-8 max-w-md">
-            Crafting scalable microfrontends by day. Tuning frequencies and welding steel by night.
-            A portfolio of digital structure and physical connection.
+            Crafting scalable software solutions by day. Tuning frequencies by night.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
