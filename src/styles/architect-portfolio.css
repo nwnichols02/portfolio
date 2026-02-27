@@ -37,3 +37,26 @@
   height: 60px;
   background-color: #111;
 }
+
+@keyframes tech-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding-inline: 2.5rem;
+}
+
+.tech-marquee-inner {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: tech-marquee 30s linear infinite;
+}

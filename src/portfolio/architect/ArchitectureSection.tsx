@@ -1,6 +1,19 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { List, LayoutGrid } from 'lucide-react'
+import {
+  SiReact,
+  SiDocker,
+  SiAmazonwebservices,
+  SiNodedotjs,
+  SiRust,
+  SiJavascript,
+  SiGit,
+  SiTerraform,
+  SiOracle,
+  SiDotnet,
+  SiPostgresql,
+} from 'react-icons/si'
 
 const PROJECTS = [
   {
@@ -35,13 +48,17 @@ const PROJECTS = [
 ]
 
 const TECH_ICONS = [
-  { label: 'React', icon: 'react' },
-  { label: 'Docker', icon: 'docker' },
-  { label: 'AWS', icon: 'aws' },
-  { label: 'Node', icon: 'node' },
-  { label: 'Rust', icon: 'rust' },
-  { label: 'JS', icon: 'js' },
-  { label: 'Git', icon: 'git' },
+  { label: 'React', Icon: SiReact },
+  { label: 'Docker', Icon: SiDocker },
+  { label: 'AWS', Icon: SiAmazonwebservices },
+  { label: 'Terraform', Icon: SiTerraform },
+  { label: 'Node', Icon: SiNodedotjs },
+  { label: 'Rust', Icon: SiRust },
+  { label: '.NET', Icon: SiDotnet },
+  { label: 'JavaScript', Icon: SiJavascript },
+  { label: 'Oracle', Icon: SiOracle },
+  { label: 'Postgres', Icon: SiPostgresql },
+  { label: 'Git', Icon: SiGit },
 ]
 
 export default function ArchitectureSection() {
@@ -144,15 +161,35 @@ export default function ArchitectureSection() {
         <p className="text-center text-xs font-mono text-gray-400 mb-8 uppercase tracking-widest">
           Technological Arsenal
         </p>
-        <div className="flex justify-between items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500 px-4 md:px-20 gap-8 flex-wrap">
-          {TECH_ICONS.map(({ label }) => (
-            <span
-              key={label}
-              className="text-2xl md:text-4xl font-mono font-semibold text-gray-600"
-            >
-              {label}
-            </span>
-          ))}
+        <div className="relative opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="tech-marquee-inner">
+            <div className="tech-marquee-track">
+              {TECH_ICONS.map(({ label, Icon }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-2 md:gap-4 text-gray-600"
+                >
+                  <Icon className="w-8 h-8 md:w-9 md:h-9" />
+                  <span className="hidden md:inline text-xl md:text-2xl font-mono font-semibold">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="tech-marquee-track" aria-hidden="true">
+              {TECH_ICONS.map(({ label, Icon }) => (
+                <div
+                  key={`${label}-duplicate`}
+                  className="flex items-center gap-2 md:gap-4 text-gray-600"
+                >
+                  <Icon className="w-8 h-8 md:w-9 md:h-9" />
+                  <span className="hidden md:inline text-xl md:text-2xl font-mono font-semibold">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

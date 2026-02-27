@@ -119,7 +119,7 @@ export default function HamRadioSection() {
       <div className="noise-overlay" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-rows-2 gap-16 items-center">
           <div>
             <div className="flex items-center gap-3 mb-6">
               <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
@@ -138,73 +138,15 @@ export default function HamRadioSection() {
             </p>
 
             {/* Radio Controls */}
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 shadow-2xl">
-              <div className="flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
-                <div className="font-mono text-2xl text-green-500">
-                  {frequency.toFixed(2)} MHz
-                </div>
-                <div className="text-xs font-mono text-gray-500">MODE: USB</div>
-              </div>
-
-              <div className="h-32 bg-black rounded-lg mb-8 relative overflow-hidden border border-gray-800 group">
-                <canvas
-                  ref={canvasRef}
-                  className="w-full h-full opacity-60 block"
-                  style={{ width: '100%', height: '100%' }}
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 md:p-6 shadow-2xl">
+              <div className="relative w-full overflow-hidden rounded-lg border border-gray-800 bg-black h-[375px]">
+                <iframe
+                  src="https://www.chilton.com/R8/receiver.html"
+                  title="Drake R8 Online Receiver"
+                  loading="lazy"
+                  className="w-full h-[650px] border-0 -translate-y-0"
                 />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-full h-px bg-green-500/30" />
-                </div>
-                <div className="absolute bottom-2 right-2 text-[10px] font-mono text-gray-600">
-                  WATERFALL DISPLAY
-                </div>
-              </div>
-
-              <div className="flex items-center gap-8">
-                <div className="relative w-32 h-32">
-                  <div className="absolute inset-0 rounded-full border-4 border-gray-800" />
-                  <div
-                    ref={knobRef}
-                    className="ham-radio-dial absolute inset-2 rounded-full bg-gradient-to-br from-gray-700 to-black shadow-lg cursor-grab active:cursor-grabbing flex items-center justify-center"
-                    style={{ transform: `rotate(${rotation}deg)` }}
-                  >
-                    <div className="w-4 h-4 bg-gray-900 rounded-full border border-gray-600" />
-                    <div className="absolute top-2 w-2 h-2 bg-white rounded-full" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between text-xs text-gray-500 font-mono mb-2">
-                    <span>7.000</span>
-                    <span>14.000</span>
-                    <span>21.000</span>
-                  </div>
-                  <input
-                    type="range"
-                    min={7000}
-                    max={21000}
-                    value={sliderValue}
-                    onChange={handleSliderChange}
-                    className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-green-500"
-                  />
-                  <div className="mt-6 flex gap-4">
-                    <button
-                      type="button"
-                      className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-mono rounded border border-gray-700 transition-colors"
-                    >
-                      SCAN
-                    </button>
-                    <button
-                      type="button"
-                      className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-mono rounded border border-gray-700 transition-colors"
-                    >
-                      MUTE
-                    </button>
-                    <div className="ml-auto flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-green-500" />
-                      <span className="text-xs font-mono text-green-500">RX</span>
-                    </div>
-                  </div>
-                </div>
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent" />
               </div>
             </div>
           </div>
@@ -218,11 +160,11 @@ export default function HamRadioSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 p-8">
               <div className="inline-block px-3 py-1 border border-white/30 rounded-full text-xs font-mono mb-4 backdrop-blur-md">
-                STATION: K1ABC
+                STATION: KJ7CEM
               </div>
               <h3 className="text-3xl font-bold mb-2">The Shack</h3>
               <p className="text-gray-400 text-sm max-w-sm">
-                My custom built station featuring ICOM transceivers and home-brewed dipole antennas.
+                My dream station with a 1000W ICOM transceiver and home-brewed dipole antennas.
               </p>
             </div>
           </div>

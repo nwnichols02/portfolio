@@ -33,6 +33,7 @@
     "react-hook-form": "^7.71.2",
     "react-i18next": "^16.5.4",
     "react-icon-cloud": "^4.1.7",
+    "react-icons": "^5.5.0",
     "react-tweet-card": "^0.2.5",
     "shiki": "^3.22.0",
     "tailwind-merge": "^3.5.0",
