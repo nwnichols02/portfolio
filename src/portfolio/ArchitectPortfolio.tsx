@@ -3,7 +3,7 @@ import ArchitectHeader from './architect/ArchitectHeader'
 import ArchitectHero from './architect/ArchitectHero'
 import ArchitectureSection from './architect/ArchitectureSection'
 import HamRadioSection from './architect/HamRadioSection'
-import WeldingSection from './architect/WeldingSection'
+// import WeldingSection from './architect/WeldingSection'
 import AboutSection from './architect/AboutSection'
 import ArchitectContact from './architect/ArchitectContact'
 
@@ -15,7 +15,7 @@ export default function ArchitectPortfolio() {
         <ArchitectHero />
         <ArchitectureSection />
         <HamRadioSection />
-        <WeldingSection />
+        {/* <WeldingSection /> */}
         <AboutSection />
         <ArchitectContact />
       </main>

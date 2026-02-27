@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ClassicPortfolio from './portfolio/ClassicPortfolio'
 import WireframePortfolio from './portfolio/WireframePortfolio'
 import ArchitectPortfolio from './portfolio/ArchitectPortfolio'
+import BlogIndex from './portfolio/architect/BlogIndex'
+import BlogPage from './portfolio/architect/BlogPage'
 
 const queryClient = new QueryClient()
 
@@ -12,7 +14,7 @@ const rootRoute = createRootRoute({
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: '/old',
   component: WireframePortfolio,
 })
 
@@ -24,11 +26,23 @@ const classicRoute = createRoute({
 
 const architectRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/architect',
+  path: '/',
   component: ArchitectPortfolio,
 })
 
-const routeTree = rootRoute.addChildren([indexRoute, classicRoute, architectRoute])
+const blogIndexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/blog',
+  component: BlogIndex,
+})
+
+const blogPostRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/blog/$slug',
+  component: BlogPage,
+})
+
+const routeTree = rootRoute.addChildren([indexRoute, classicRoute, architectRoute, blogIndexRoute, blogPostRoute])
 
 const router = createRouter({ routeTree })
 

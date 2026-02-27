@@ -1,19 +1,19 @@
 const EXPERIENCE = [
   {
-    role: 'Senior Architect @ TechCorp',
+    role: 'Senior Web Application Developer @ UtiliSource',
     period: '2022 - Present',
-    description: 'Leading the migration to microfrontends.',
+    description: 'Leading the migration to micro-frontends architecture, improving scalability and development efficiency.',
   },
-  {
-    role: 'Lead Developer @ StartUp Inc',
-    period: '2019 - 2022',
-    description: 'Scaled platform from 10k to 1M users.',
-  },
-  {
-    role: 'Full Stack Dev @ Agency',
-    period: '2016 - 2019',
-    description: 'Delivered 30+ web projects.',
-  },
+  // {
+  //   role: 'Lead Developer @ StartUp Inc',
+  //   period: '2019 - 2022',
+  //   description: 'Scaled platform from 10k to 1M users.',
+  // },
+  // {
+  //   role: 'Full Stack Dev @ Agency',
+  //   period: '2016 - 2019',
+  //   description: 'Delivered 30+ web projects.',
+  // },
 ]
 
 export default function AboutSection() {
@@ -40,7 +40,7 @@ export default function AboutSection() {
             <div className="flex flex-col justify-between">
               <div>
                 <h3 className="text-2xl font-bold mb-6">
-                  Product and industrial designer based in Florence, focused on creating complete
+                  Product and industrial designer based in Memphis, TN, focused on creating complete
                   product experiences.
                 </h3>
                 <p className="text-gray-600 mb-6 text-sm leading-relaxed">
@@ -49,9 +49,9 @@ export default function AboutSection() {
                   their own formal and aesthetic identity.
                 </p>
                 <p className="text-gray-600 mb-12 text-sm leading-relaxed">
-                  With over 10 years of experience in full-stack development, I&apos;ve transitioned
+                  With over 4 years of experience in full-stack development, I&apos;ve transitioned
                   into high-level architecture. I don&apos;t just write code; I design systems that
-                  scale, endure, and perform.
+                  scale, endure, and perform in the AI era.
                 </p>
               </div>
 

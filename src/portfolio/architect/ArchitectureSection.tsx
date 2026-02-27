@@ -1,31 +1,35 @@
 import { useState } from 'react'
+import { Link } from '@tanstack/react-router'
 import { List, LayoutGrid } from 'lucide-react'
 
 const PROJECTS = [
   {
+    slug: 'enterprise-mf-platform',
     tag: 'FEDERATION',
     title: 'Enterprise MF Platform',
     description:
       'Scalable module federation system serving 50+ internal applications. Zero-coupling architecture.',
-    year: '2023',
+    year: '2024',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop',
     alt: 'Microfrontend Architecture',
   },
   {
+    slug: 'cloud-native-event-bus',
     tag: 'SYSTEM DESIGN',
     title: 'Cloud Native Event Bus',
     description:
       'High-throughput event sourcing system for real-time financial data processing.',
-    year: '2022',
+    year: '2023',
     image: 'https://storage.googleapis.com/uxpilot-auth.appspot.com/cc9fa56c8f-942901adb0d00df7a978.png',
     alt: 'System Design',
   },
   {
+    slug: 'react-micro-loader',
     tag: 'OPEN SOURCE',
     title: 'React Micro-Loader',
     description:
       'Lightweight utility for dynamic remote component loading. 2k+ stars on GitHub.',
-    year: '2021',
+    year: '2022',
     codeSnippet: true,
   },
 ]
@@ -61,9 +65,8 @@ export default function ArchitectureSection() {
           <button
             type="button"
             onClick={() => setGridView(false)}
-            className={`w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full transition-colors ${
-              !gridView ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
-            }`}
+            className={`w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full transition-colors ${!gridView ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
+              }`}
             aria-label="List view"
           >
             <List className="w-4 h-4" />
@@ -71,9 +74,8 @@ export default function ArchitectureSection() {
           <button
             type="button"
             onClick={() => setGridView(true)}
-            className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
-              gridView ? 'bg-black text-white' : 'border border-gray-200 hover:bg-black hover:text-white'
-            }`}
+            className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${gridView ? 'bg-black text-white' : 'border border-gray-200 hover:bg-black hover:text-white'
+              }`}
             aria-label="Grid view"
           >
             <LayoutGrid className="w-4 h-4" />
@@ -89,7 +91,12 @@ export default function ArchitectureSection() {
         }
       >
         {PROJECTS.map((project) => (
-          <div key={project.title} className="group cursor-pointer">
+          <Link
+            key={project.title}
+            to="/blog/$slug"
+            params={{ slug: project.slug }}
+            className="group cursor-pointer block"
+          >
             <div className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-6">
               {project.codeSnippet ? (
                 <div className="w-full h-full bg-gray-900 flex items-center justify-center p-8">
@@ -128,7 +135,7 @@ export default function ArchitectureSection() {
                 {project.year}
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

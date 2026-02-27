@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
 
 const SECTIONS = [
   { id: 'hero', label: 'Home' },
   { id: 'architecture', label: 'Architecture' },
   { id: 'ham-radio', label: 'Ham Radio' },
-  { id: 'welding', label: 'Welding' },
+  // { id: 'welding', label: 'Welding' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -66,6 +67,12 @@ export default function ArchitectHeader() {
           </nav>
 
           <div className="flex items-center gap-4">
+            <Link
+              to="/blog"
+              className="hidden md:inline-flex text-xs font-mono px-3 py-1.5 border border-gray-300 rounded-full hover:bg-black hover:text-white transition-colors"
+            >
+              Blog
+            </Link>
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
@@ -96,6 +103,13 @@ export default function ArchitectHeader() {
         >
           <X className="w-6 h-6" />
         </button>
+        <Link
+          to="/blog"
+          className="absolute top-6 left-6 text-xs font-mono px-3 py-1.5 border border-gray-300 rounded-full hover:bg-black hover:text-white transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          Blog
+        </Link>
         {SECTIONS.map(({ id, label }) => (
           <a
             key={id}
