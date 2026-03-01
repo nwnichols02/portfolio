@@ -19,13 +19,21 @@ const scrollToSection = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
-export default function ArchitectHeader() {
+type ArchitectHeaderProps = {
+  onRequestOffline?: () => void
+}
+
+export default function ArchitectHeader({ onRequestOffline }: ArchitectHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [titleIndex, setTitleIndex] = useState(0)
   const { theme, setTheme } = useTheme()
   const isSystemOffline = theme === 'dark'
 
   const handleStatusClick = () => {
+    if (!isSystemOffline && onRequestOffline) {
+      onRequestOffline()
+      return
+    }
     setTheme(isSystemOffline ? 'light' : 'dark')
   }
 

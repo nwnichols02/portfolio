@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowDown, Github, Linkedin, Twitter } from 'lucide-react'
+import { ArrowRight, ArrowDown, Github, Linkedin } from 'lucide-react'
 
 export default function ArchitectHero() {
   return (
@@ -60,9 +60,6 @@ export default function ArchitectHero() {
           </a>
           <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors" aria-label="LinkedIn">
             <Linkedin className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors" aria-label="Twitter">
-            <Twitter className="w-5 h-5" />
           </a>
         </div>
       </div>

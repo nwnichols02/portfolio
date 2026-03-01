@@ -74,3 +74,19 @@ html.dark .architect-portfolio-scrollbar::-webkit-scrollbar-thumb:hover {
   white-space: nowrap;
   animation: tech-marquee 30s linear infinite;
 }
+
+/* Truth intro – flashing cursor (Magic UI style) */
+@keyframes truth-intro-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.truth-intro-cursor {
+  animation: truth-intro-blink 530ms step-end infinite;
+}

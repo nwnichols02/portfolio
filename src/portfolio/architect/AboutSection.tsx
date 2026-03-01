@@ -40,8 +40,8 @@ export default function AboutSection() {
             <div className="flex flex-col justify-between">
               <div>
                 <h3 className="text-2xl font-bold mb-6 text-black dark:text-white">
-                  Product and industrial designer based in Memphis, TN, focused on creating complete
-                  product experiences.
+                  Software architect and engineer based in Memphis, TN, focused on creating complete
+                  product and system experiences.
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
                   I believe in the minimal and essential approach, expressed through the search for
