@@ -6,10 +6,16 @@ import HamRadioSection from './architect/HamRadioSection'
 // import WeldingSection from './architect/WeldingSection'
 import AboutSection from './architect/AboutSection'
 import ArchitectContact from './architect/ArchitectContact'
+import MatrixCodeRain from './architect/MatrixCodeRain'
+import { useTheme } from '@/contexts/ThemeProvider'
 
 export default function ArchitectPortfolio() {
+  const { theme } = useTheme()
+  const isSystemOffline = theme === 'dark'
+
   return (
     <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-brand-text font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black architect-portfolio-scrollbar">
+      <MatrixCodeRain visible={isSystemOffline} />
       <ArchitectHeader />
       <main id="main-content" className="pt-20">
         <ArchitectHero />
