@@ -128,5 +128,4 @@ export default {
 		},
 		require("tailwindcss-animate")
 	],
-	darkMode: ['class', "class"],
 }

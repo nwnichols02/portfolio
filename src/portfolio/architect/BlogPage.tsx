@@ -87,23 +87,23 @@ export default function BlogPage() {
   }, [slug])
 
   return (
-    <div className="min-h-screen bg-[#fafafa] text-brand-text font-sans antialiased">
-      <header className="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-brand-text font-sans antialiased">
+      <header className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-[#0a0a0a]/90 backdrop-blur-sm sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between gap-6">
           <div className="space-y-1">
-            <p className="text-[0.65rem] font-mono uppercase tracking-[0.25em] text-gray-500">
+            <p className="text-[0.65rem] font-mono uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">
               {post.category} · {post.year}
             </p>
-            <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-black">
+            <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-black dark:text-white">
               {post.title}
             </h1>
-            <p className="text-[0.7rem] font-mono text-gray-400">
+            <p className="text-[0.7rem] font-mono text-gray-400 dark:text-gray-400">
               Updated Feb 2026 · {post.readingTime}
             </p>
           </div>
           <a
             href="/blog"
-            className="hidden sm:inline-flex text-xs font-mono px-3 py-1.5 border border-gray-300 rounded-full hover:bg-black hover:text-white transition-colors whitespace-nowrap"
+            className="hidden sm:inline-flex text-xs font-mono px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded-full text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors whitespace-nowrap"
           >
             ← Back to blog
           </a>
@@ -112,10 +112,10 @@ export default function BlogPage() {
 
       <main className="max-w-5xl mx-auto px-6 py-10 md:py-14">
         {/* Top meta + quick summary */}
-        <section className="mb-10 border-b border-gray-200 pb-8">
+        <section className="mb-10 border-b border-gray-200 dark:border-gray-800 pb-8">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">{post.tagline}</p>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{post.tagline}</p>
             </div>
           </div>
         </section>
@@ -125,8 +125,8 @@ export default function BlogPage() {
           {/* Main article */}
           <article className="space-y-12">
             {/* Local table of contents (mobile) */}
-            <nav className="lg:hidden mb-4 rounded-2xl border border-gray-200 bg-white px-4 py-4">
-              <p className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-gray-500 mb-3">
+            <nav className="lg:hidden mb-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111] px-4 py-4">
+              <p className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 mb-3">
                 Table of contents
               </p>
               <ol className="space-y-2 text-sm">
@@ -134,7 +134,7 @@ export default function BlogPage() {
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className="text-gray-700 hover:text-black underline underline-offset-4 decoration-[0.5px]"
+                      className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline underline-offset-4 decoration-[0.5px]"
                     >
                       {section.label}
                     </a>
@@ -145,18 +145,18 @@ export default function BlogPage() {
 
             {/* Continuous article sections */}
             <section id="overview" className="space-y-3">
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black">
+              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black dark:text-white">
                 Overview
               </h2>
               {post.slug === 'enterprise-mf-platform' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Enterprise frontends are finally catching up to the way we already think about
                     backends: independently deployable, isolated modules that can evolve without a
                     &quot;big bang&quot; rewrite. Module Federation plus Vite gives you that power
                     with production‑grade DX and runtime performance.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Module Federation lets separate builds expose and consume code from each other
                     at runtime, without a monolithic bundle or iframes. With Vite, you get that on
                     top of lightning‑fast dev and modern tooling. At an enterprise level, this
@@ -172,12 +172,12 @@ export default function BlogPage() {
               )}
               {post.slug === 'secure-sdlc-frontend' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Enterprise teams are great at scaling features, but much worse at scaling
                     security. A Secure SDLC (SSDLC) fixes that by baking security into every phase
                     of delivery instead of bolting it on as a pre‑release checklist.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     This post walks through a practical SSDLC you can layer onto a modern front‑ and
                     back‑end stack, with a bias toward automation, guardrails, and developer‑friendly
                     tooling. A Secure SDLC is the standard software development lifecycle with
@@ -191,7 +191,7 @@ export default function BlogPage() {
               )}
               {post.slug === 'react-micro-loader' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     When you decide to go offline‑first, you&apos;re saying the local database is
                     the source of truth for user experience, and the server is a peer you eventually
                     reconcile with. That implies: every write must succeed locally, even when the
@@ -200,7 +200,7 @@ export default function BlogPage() {
                     request. Your architecture has to treat network as optional and sync as a
                     background concern rather than a prerequisite.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     <strong>WatermelonDB</strong> is built for this: a high‑performance,
                     SQLite‑backed database optimized for React/React Native, with a schema‑first
                     model and observable queries. It gives you normalized relational data on device
@@ -214,11 +214,11 @@ export default function BlogPage() {
               )}
               {post.slug === 'beginners-guide' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     This article is a plain-language tour of my architecture portfolio: how the pieces
                     fit together and what I optimize for.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     The blog is organized around three themes—<strong>enterprise frontends</strong>{' '}
                     (Vite, Module Federation, zero-coupling micro-frontends), <strong>security</strong>{' '}
                     (Secure SDLC and DevSecOps for modern platforms), and <strong>offline-first</strong>{' '}
@@ -229,12 +229,12 @@ export default function BlogPage() {
               )}
               {post.slug === 'technical-leadership' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Technical leadership is not a promotion from &quot;strong IC&quot;; it&apos;s a
                     different job. The core output changes from &quot;I write great code&quot; to
                     &quot;the team reliably ships the right system.&quot;
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     A strong senior can own problems end‑to‑end; a technical leader owns systems and
                     people dynamics around those systems. The shifts that matter: <strong>from depth
                     to leverage</strong>—you still understand the hard parts, but you optimize for
@@ -249,12 +249,12 @@ export default function BlogPage() {
               )}
               {post.slug === 'domain-driven-design' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Domain‑Driven Design (DDD) is less about fancy diagrams and more about putting
                     your codebase under the control of the business language, not the database schema
                     or the framework of the month.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     <strong>What DDD actually optimizes for</strong> is alignment: the people who
                     understand the problem domain and the people writing the code speak the same
                     language and see the same model. That gives you: a <strong>shared vocabulary</strong>{' '}
@@ -270,13 +270,13 @@ export default function BlogPage() {
             </section>
 
             <section id="architecture" className="space-y-3">
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black">
+              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black dark:text-white">
                 Architecture decisions
               </h2>
               {post.slug === 'enterprise-mf-platform' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">Zero‑coupling principles</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Zero‑coupling principles</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Most MF implementations stop at &quot;separate repos and independent
                     deploys.&quot; Zero‑coupling goes further: MFEs don&apos;t know each other
                     exist. They integrate only through a stable contract with the platform shell.
@@ -289,47 +289,47 @@ export default function BlogPage() {
                     logging/telemetry, configuration). In practice, an MFE is a pure function from
                     &quot;platform‑provided props + URL&quot; to UI.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Platform topology: shell and MFEs
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     At a minimum you have: a <strong>shell (host)</strong>—Vite app for layout,
                     routing, auth bootstrap, and feature discovery, consuming remotes via Module
                     Federation; <strong>domain MFEs (remotes)</strong>—independently deployed Vite
-                    apps exposing React roots like <code className="font-mono text-xs bg-gray-100 px-1.5 py-0.5 rounded">./OrdersApp</code>, <code className="font-mono text-xs bg-gray-100 px-1.5 py-0.5 rounded">./BillingApp</code>; and optionally{' '}
+                    apps exposing React roots like <code className="font-mono text-xs bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded">./OrdersApp</code>, <code className="font-mono text-xs bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded">./BillingApp</code>; and optionally{' '}
                     <strong>mixed‑tech remotes</strong> (legacy Webpack/Rspack) while you migrate
                     toward Vite. The shell uses route‑based composition: each route segment maps to
                     a remote module that renders into a zone, with lazy loading via dynamic{' '}
-                    <code className="font-mono text-xs bg-gray-100 px-1.5 py-0.5 rounded">import()</code>.
+                    <code className="font-mono text-xs bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded">import()</code>.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Vite + Module Federation configuration
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Vite doesn&apos;t ship Module Federation out of the box; use{' '}
-                    <code className="font-mono text-xs bg-gray-100 px-1.5 py-0.5 rounded">@originjs/vite-plugin-federation</code> or the official{' '}
-                    <code className="font-mono text-xs bg-gray-100 px-1.5 py-0.5 rounded">@module-federation/vite</code>. For the host: declare the shell as host with remotes and shared; map remote names (e.g. orders, billing) to remoteEntry URLs (configurable per environment); share react and react‑dom as singletons. For a remote MFE: declare <code className="font-mono text-xs bg-gray-100 px-1.5 py-0.5 rounded">exposes</code> to root components/widgets; mirror shared dependencies from the host. You keep fast HMR, TS support, and normal React tooling.
+                    <code className="font-mono text-xs bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded">@originjs/vite-plugin-federation</code> or the official{' '}
+                    <code className="font-mono text-xs bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded">@module-federation/vite</code>. For the host: declare the shell as host with remotes and shared; map remote names (e.g. orders, billing) to remoteEntry URLs (configurable per environment); share react and react‑dom as singletons. For a remote MFE: declare <code className="font-mono text-xs bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded">exposes</code> to root components/widgets; mirror shared dependencies from the host. You keep fast HMR, TS support, and normal React tooling.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Enforcing zero coupling
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Enforce via code and tooling: <strong>type‑safe shell contracts</strong> (e.g.
                     PlatformContext, FeatureFlags, UserContext in a shared types package, no
                     concrete implementations across MFEs); <strong>no shared global state</strong>—MFEs
                     get state through props from the shell and manage local/remote data with their
                     own stack (e.g. TanStack Query); <strong>event‑driven integration</strong>—cross‑MFE
                     effects via shell‑mediated events or URL changes (e.g. Orders MFE navigates to{' '}
-                    <code className="font-mono text-xs bg-gray-100 px-1.5 py-0.5 rounded">/billing/invoice/123</code>, shell loads Billing MFE). This mirrors microservice design: MFEs only talk through APIs and contracts they don&apos;t own.
+                    <code className="font-mono text-xs bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded">/billing/invoice/123</code>, shell loads Billing MFE). This mirrors microservice design: MFEs only talk through APIs and contracts they don&apos;t own.
                   </p>
                 </>
               )}
               {post.slug === 'secure-sdlc-frontend' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Phase‑by‑phase Secure SDLC flow
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Frame the SSDLC as five core phases: <strong>Requirements</strong>—capture
                     security requirements, regulatory constraints, and risk appetite alongside
                     functional and non‑functional requirements. <strong>Design</strong>—threat
@@ -341,10 +341,10 @@ export default function BlogPage() {
                     monitor for attacks, feed production findings back into requirements and threat
                     models.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Threat modeling as the backbone
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Threat modeling keeps security work focused. Embed it early (requirements/design
                     for new systems and when you introduce significant architectural change). Use
                     data‑flow‑centric views: model how data moves through services, UIs, APIs, and
@@ -353,10 +353,10 @@ export default function BlogPage() {
                     understand the &quot;why&quot; behind mitigations. Done right, threat models
                     become living artifacts you update as the system evolves.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     DevSecOps: automating the guardrails
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Secure SDLC in practice is SSDLC plus DevSecOps: security controls wired into
                     pipelines and environments. CI pipeline checks: SAST, dependency scanning, secret
                     detection, basic IaC validation on every merge, with policy gates for critical
@@ -370,10 +370,10 @@ export default function BlogPage() {
               )}
               {post.slug === 'react-micro-loader' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     The real pain: sync engines
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Sync is where offline‑first projects get hard. You&apos;ll hit{' '}
                     <strong>conflict resolution</strong> (last‑write‑wins is often wrong;
                     domain‑aware merge becomes a mini rules engine), <strong>partial
@@ -384,10 +384,10 @@ export default function BlogPage() {
                     you didn&apos;t design for). All of this has to run in the background, under
                     flaky connectivity, without corrupting the local DB or blocking the UI.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     &quot;Batteries included&quot; sync: blessing and trap
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Hosted backends and turnkey sync engines are great for prototyping, avoiding
                     the first 6–12 months of building diff/push/pull/retry machinery, and standard
                     CRUD with simple record‑level conflicts. But they have hard limits: domain logic
@@ -397,10 +397,10 @@ export default function BlogPage() {
                     <em>there will come a day when you have to write your own sync logic</em>. Treat
                     them like scaffolding, not foundations.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Designing your own sync layer
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     When you own sync, WatermelonDB can still be the workhorse; the sync engine is a
                     thin layer around it and your backend. Center on: <strong>explicit change
                     tracking</strong> (server: &quot;changes since cursor X&quot; per collection;
@@ -417,12 +417,12 @@ export default function BlogPage() {
               )}
               {post.slug === 'beginners-guide' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Across all of my work, I optimize for systems that are predictable to operate
                     and forgiving to change: explicit contracts, observable behavior, and
                     architectures that make errors visible early instead of hiding them.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     The other posts expand on that in practice—zero-coupling boundaries in
                     federated frontends, phase-by-phase security in the SDLC, and explicit change
                     tracking and conflict rules in offline-first sync. The details differ, but the
@@ -432,12 +432,12 @@ export default function BlogPage() {
               )}
               {post.slug === 'technical-leadership' && (
                 <>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     You can think of technical leadership as three overlapping jobs: Architect,
                     Coach, and Shield.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">1. Architect: Shape the System</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">1. Architect: Shape the System</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     The Architect job is about direction and constraints, not drawing boxes all day.
                     Define guardrails: coding standards, architectural principles (e.g., zero‑coupling
                     MFEs, offline‑first boundaries, secure SDLC expectations), and what &quot;good&quot;
@@ -448,8 +448,8 @@ export default function BlogPage() {
                     leaders create an environment where most decisions can be made locally because
                     the big decisions are clear.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">2. Coach: Grow People and Practices</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">2. Coach: Grow People and Practices</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     You can&apos;t scale technical leadership without investing in others. Review at the
                     right altitude: don&apos;t bikeshed syntax; focus reviews on correctness, boundaries,
                     failure modes, and long‑term maintainability. Turn feedback into patterns: if you
@@ -459,8 +459,8 @@ export default function BlogPage() {
                     not &quot;nice to have.&quot; The goal is to make the team more capable over time, so
                     things that were &quot;hard&quot; become routine.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">3. Shield: Manage Risk and Expectations</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">3. Shield: Manage Risk and Expectations</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Technical leaders sit at the intersection of engineering reality and business
                     demands. Translate risk: explain impact, likelihood, and options in business
                     terms—&quot;If we skip this, here&apos;s the failure mode and cost.&quot; Say &quot;no,
@@ -470,8 +470,8 @@ export default function BlogPage() {
                     complete work. When done well, stakeholders see fewer surprises, and engineers
                     see fewer &quot;fire drills.&quot;
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">Leading Through Design, Not Heroics</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Leading Through Design, Not Heroics</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Technical leaders are judged less on heroics and more on avoiding drama through
                     good design. Write clear design docs: expected behavior, constraints, risks, and
                     alternatives; good docs reduce meetings and misalignment. Prefer simple, boring
@@ -485,8 +485,8 @@ export default function BlogPage() {
               )}
               {post.slug === 'domain-driven-design' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">Core concepts in DDD</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Core concepts in DDD</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     You don&apos;t need the whole book to get value. A few core ideas get you most of the
                     way. <strong>Ubiquitous Language</strong>: everyone uses the same terms for domain
                     concepts, and those terms show up in code, tests, and docs.{' '}
@@ -498,10 +498,10 @@ export default function BlogPage() {
                     PaymentCaptured, OrderShipped) which can drive side effects elsewhere. If a
                     concept isn&apos;t clear enough to name, it probably isn&apos;t stable enough to model yet.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Bounded Contexts and micro‑frontends / services
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     For modern distributed systems and micro‑frontends, Bounded Contexts are your
                     best friend. They help you draw boundaries: &quot;Billing,&quot; &quot;Catalog,&quot;
                     &quot;Fulfillment,&quot; &quot;Identity&quot; each have their own model and language,
@@ -512,8 +512,8 @@ export default function BlogPage() {
                     and databases should line up with these contexts where possible, instead of
                     arbitrary technical splits.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">Aggregates and invariants</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Aggregates and invariants</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Aggregates are about where you need strong consistency and where you can tolerate
                     eventual consistency. Ask: what must always be true when we commit a change?
                     (Invariants.) Which objects must be updated together to preserve those
@@ -523,8 +523,8 @@ export default function BlogPage() {
                     asynchronously in a different bounded context. Good aggregate boundaries simplify
                     transaction logic and reduce cross‑service coupling.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">Domain Events and integration</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Domain Events and integration</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Domain Events turn implicit behavior into explicit, composable contracts. They
                     help you decouple workflows: OrderPlaced can drive email notifications, analytics,
                     and fulfillment without the Order service knowing about any of them. They improve
@@ -534,8 +534,8 @@ export default function BlogPage() {
                     It&apos;s often better to start small—raise events for a few core behaviors—than to
                     try to event‑source your entire system from day one.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">Strategic vs tactical DDD</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Strategic vs tactical DDD</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     A lot of teams jump straight into annotations and aggregates and miss the point.{' '}
                     <strong>Strategic DDD</strong>: Bounded Contexts, context maps, and language
                     alignment. This is where the biggest wins live.{' '}
@@ -544,8 +544,8 @@ export default function BlogPage() {
                     strategic: get the boundaries and language right before fine‑tuning patterns inside
                     each context.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">Applying DDD in a modern stack</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Applying DDD in a modern stack</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     In a React / TypeScript / services world, DDD shows up as: <strong>domain‑first
                     modules and packages</strong>—billing-domain, inventory-domain, identity-domain,
                     each exporting pure domain logic and types; <strong>use cases / application
@@ -561,15 +561,15 @@ export default function BlogPage() {
             </section>
 
             <section id="impact" className="space-y-3">
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black">
+              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black dark:text-white">
                 Impact & tradeoffs
               </h2>
               {post.slug === 'enterprise-mf-platform' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Monorepo, CI/CD, and scalability
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     You can run this architecture in a monorepo or multi‑repo; Module Federation
                     works with both. A monorepo plus MF gives you coordinated but optional
                     releases (MFEs versioned independently in a single source of truth), shared
@@ -578,10 +578,10 @@ export default function BlogPage() {
                     Vite). CI/CD builds and deploys each MFE independently, publishing
                     remoteEntry assets to your CDN or edge platform.
                   </p>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Where this shines in the enterprise
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     This style works well for: <strong>large e‑commerce platforms</strong> (product
                     discovery, checkout, account, admin ship independently with a coherent design
                     system); <strong>internal admin portals</strong> (analytics, reporting,
@@ -595,10 +595,10 @@ export default function BlogPage() {
               )}
               {post.slug === 'secure-sdlc-frontend' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Culture, roles, and security champions
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     No SSDLC survives contact with reality without people and ownership. Use{' '}
                     <strong>defined security roles</strong> so development, operations, and
                     security have clear responsibilities and fewer &quot;not my job&quot; gaps.{' '}
@@ -613,10 +613,10 @@ export default function BlogPage() {
               )}
               {post.slug === 'react-micro-loader' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">
                     Practical guidance before you commit
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     If you&apos;re starting a new offline‑first project with WatermelonDB (or
                     similar): start with the simplest working sync that respects your domain, even
                     if you lean on a managed service at first. Keep sync logic isolated from UI—treat
@@ -625,7 +625,7 @@ export default function BlogPage() {
                     you code them; if you can&apos;t explain them, you won&apos;t debug them. Budget
                     time for sync from day one; don&apos;t treat it as a &quot;later&quot; feature.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Offline‑first is worth it for many products, but the cost isn&apos;t in
                     WatermelonDB or local state—it&apos;s in owning synchronization as a
                     first‑class part of your architecture.
@@ -633,7 +633,7 @@ export default function BlogPage() {
                 </>
               )}
               {post.slug === 'beginners-guide' && (
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                   The impact of these systems isn&apos;t just technical. They shape how teams work:
                   who owns what (MFEs vs shell, security champions, sync ownership), how risk is
                   managed (SSDLC phases, conflict policies), and how quickly you can change
@@ -642,8 +642,8 @@ export default function BlogPage() {
               )}
               {post.slug === 'technical-leadership' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">Influence Without Authority</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Influence Without Authority</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     Even as a titled lead, most of your impact is persuasion, not command. Lead by
                     example, selectively: pick a few critical paths (an architecture spike, the first
                     MFE, the initial sync engine) and execute them in the style you want others to
@@ -657,8 +657,8 @@ export default function BlogPage() {
               )}
               {post.slug === 'domain-driven-design' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">Alignment and team ownership</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Alignment and team ownership</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     The main payoff of DDD is alignment: product, engineering, and stakeholders
                     share a vocabulary and a mental model. That reduces miscommunication, makes
                     onboarding easier, and keeps the codebase understandable as the domain evolves.
@@ -673,13 +673,13 @@ export default function BlogPage() {
             </section>
 
             <section id="lessons" className="space-y-3">
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black">
+              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-black dark:text-white">
                 Lessons for teams
               </h2>
               {post.slug !== 'technical-leadership' && (
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                   The common thread across all of these projects is simple:{' '}
-                  <span className="font-medium text-gray-900">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     architecture is there to serve teams, not the other way around
                   </span>
                   . Good systems make it obvious how to do the right thing, and cheap to recover when
@@ -688,8 +688,8 @@ export default function BlogPage() {
               )}
               {post.slug === 'technical-leadership' && (
                 <>
-                  <h3 className="text-lg font-semibold text-black mt-4">Staying Technical Without Being a Bottleneck</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mt-4">Staying Technical Without Being a Bottleneck</h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     The trap is either becoming non‑technical or the single point of failure. Allocate
                     time for deep work: reserve blocks for reading code, experimenting, and staying
                     current with the stack. Avoid owning every critical path: pair or mob on important
@@ -697,7 +697,7 @@ export default function BlogPage() {
                     visibly: let others lead projects and designs, and support them publicly;
                     you&apos;re there to de‑risk, not to take over.
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                     If the system keeps moving in the right direction while you&apos;re on vacation,
                     that&apos;s a strong signal of effective technical leadership.
                   </p>
@@ -709,17 +709,17 @@ export default function BlogPage() {
           {/* Sidebar: table of contents + meta (desktop) */}
           <aside className="hidden lg:block space-y-6">
             <div className="sticky top-32 space-y-6">
-              <section className="rounded-2xl border border-gray-200 bg-white px-4 py-4">
-                <p className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-gray-500 mb-3">
+              <section className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111] px-4 py-4">
+                <p className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 mb-3">
                   Table of contents
                 </p>
                 <ol className="space-y-2 text-sm">
                   {POST_SECTIONS.map((section) => (
                     <li key={section.id} className="flex items-center gap-2">
-                      <span className="h-px w-4 bg-gray-300" />
+                      <span className="h-px w-4 bg-gray-300 dark:bg-gray-600" />
                       <a
                         href={`#${section.id}`}
-                        className="text-gray-700 hover:text-black underline underline-offset-4 decoration-[0.5px]"
+                        className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white underline underline-offset-4 decoration-[0.5px]"
                       >
                         {section.label}
                       </a>
@@ -732,13 +732,13 @@ export default function BlogPage() {
         </div>
 
         {/* Stay curious footer */}
-        <section className="mt-16 border-t border-gray-200 pt-10">
-          <div className="rounded-2xl border border-dashed border-gray-300 bg-white/70 px-6 py-6 md:py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <section className="mt-16 border-t border-gray-200 dark:border-gray-800 pt-10">
+          <div className="rounded-2xl border border-dashed border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-[#111]/80 px-6 py-6 md:py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <p className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-gray-500 mb-1">
+              <p className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 mb-1">
                 Stay curious
               </p>
-              <p className="text-sm text-gray-700 max-w-xl">
+              <p className="text-sm text-gray-700 dark:text-gray-300 max-w-xl">
                 I&apos;m always happy to nerd out about federation, event-driven systems, or
                 frontend platforms. If something here sparked ideas for your team, reach out via the
                 contact section on the main page.
@@ -746,7 +746,7 @@ export default function BlogPage() {
             </div>
             <a
               href="/#contact"
-              className="inline-flex justify-center items-center text-xs font-mono px-4 py-2 border border-black rounded-full bg-black text-white hover:bg-white hover:text-black transition-colors"
+              className="inline-flex justify-center items-center text-xs font-mono px-4 py-2 border border-black dark:border-white rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-[#111] dark:hover:text-white transition-colors"
             >
               Contact me about architecture →
             </a>

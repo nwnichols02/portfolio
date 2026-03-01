@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
+/* Class-based dark mode: dark: utilities apply when .dark is on an ancestor (e.g. <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* =============================================================================
    EXISTING (CLASSIC) GLOBAL STYLES - preserved, commented out.
    Uncomment to restore classic typography, scrollbar, and transition behavior.

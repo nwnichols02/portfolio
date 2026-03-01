@@ -9,7 +9,7 @@ import ArchitectContact from './architect/ArchitectContact'
 
 export default function ArchitectPortfolio() {
   return (
-    <div className="min-h-screen bg-[#fafafa] text-brand-text font-sans antialiased selection:bg-black selection:text-white architect-portfolio-scrollbar">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-brand-text font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black architect-portfolio-scrollbar">
       <ArchitectHeader />
       <main id="main-content" className="pt-20">
         <ArchitectHero />

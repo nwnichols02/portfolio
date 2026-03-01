@@ -67,13 +67,13 @@ export default function ArchitectureSection() {
   return (
     <section
       id="architecture"
-      className="py-24 px-6 lg:px-12 max-w-[1920px] mx-auto bg-white rounded-t-[3rem] shadow-2xl relative z-10 -mt-12"
+      className="py-24 px-6 lg:px-12 max-w-[1920px] mx-auto bg-white dark:bg-[#111] rounded-t-[3rem] shadow-2xl relative z-10 -mt-12"
     >
-      <div className="mb-16 border-b border-gray-100 pb-8">
-        <span className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-2 block">
+      <div className="mb-16 border-b border-gray-100 dark:border-gray-800 pb-8">
+        <span className="text-xs font-mono text-gray-600 dark:text-gray-400 uppercase tracking-widest mb-2 block">
           Core Competencies
         </span>
-        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-black">
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-black dark:text-white">
           Architecture
         </h2>
       </div>
@@ -86,27 +86,27 @@ export default function ArchitectureSection() {
             params={{ slug: project.slug }}
             className="group cursor-pointer block"
           >
-            <div className="relative overflow-hidden bg-gray-100 aspect-[4/3] mb-6 rounded-xl">
+            <div className="relative overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-[4/3] mb-6 rounded-xl">
               <img
                 src={project.image}
                 alt={project.alt}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-mono rounded-full">
+              <div className="absolute top-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur px-3 py-1 text-xs font-mono rounded-full text-black dark:text-white">
                 {project.tag}
               </div>
             </div>
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="text-2xl font-semibold mb-2 group-hover:underline decoration-1 underline-offset-4 text-black">
+                <h3 className="text-2xl font-semibold mb-2 group-hover:underline decoration-1 underline-offset-4 text-black dark:text-white">
                   {project.title}
                 </h3>
-                <p className="text-gray-700 text-sm leading-relaxed max-w-sm">
+                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed max-w-sm">
                   {project.description}
                 </p>
               </div>
-              <span className="text-xs font-mono text-gray-600 shrink-0 ml-2">
+              <span className="text-xs font-mono text-gray-600 dark:text-gray-400 shrink-0 ml-2">
                 {project.year}
               </span>
             </div>
@@ -115,8 +115,8 @@ export default function ArchitectureSection() {
       </div>
 
       {/* Tech Stack Marquee */}
-      <div className="mt-24 border-t border-b border-gray-100 py-12 overflow-hidden">
-        <p className="text-center text-xs font-mono text-gray-400 mb-8 uppercase tracking-widest">
+      <div className="mt-24 border-t border-b border-gray-100 dark:border-gray-800 py-12 overflow-hidden">
+        <p className="text-center text-xs font-mono text-gray-400 dark:text-gray-400 mb-8 uppercase tracking-widest">
           Technological Arsenal
         </p>
         <div className="relative opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
@@ -125,7 +125,7 @@ export default function ArchitectureSection() {
               {TECH_ICONS.map(({ label, Icon }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-2 md:gap-4 text-gray-600"
+                  className="flex items-center gap-2 md:gap-4 text-gray-600 dark:text-gray-400"
                 >
                   <Icon className="w-8 h-8 md:w-9 md:h-9" />
                   <span className="hidden md:inline text-xl md:text-2xl font-mono font-semibold">
@@ -138,7 +138,7 @@ export default function ArchitectureSection() {
               {TECH_ICONS.map(({ label, Icon }) => (
                 <div
                   key={`${label}-duplicate`}
-                  className="flex items-center gap-2 md:gap-4 text-gray-600"
+                  className="flex items-center gap-2 md:gap-4 text-gray-600 dark:text-gray-400"
                 >
                   <Icon className="w-8 h-8 md:w-9 md:h-9" />
                   <span className="hidden md:inline text-xl md:text-2xl font-mono font-semibold">

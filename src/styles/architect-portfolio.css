@@ -17,6 +17,20 @@
   background: #555;
 }
 
+/* Dark mode scrollbar when html has .dark */
+html.dark .architect-portfolio-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+html.dark .architect-portfolio-scrollbar::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+}
+
+html.dark .architect-portfolio-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
 .noise-overlay {
   position: absolute;
   top: 0;
