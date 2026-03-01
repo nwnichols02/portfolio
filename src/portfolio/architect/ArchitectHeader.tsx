@@ -11,12 +11,16 @@ const SECTIONS = [
   { id: 'contact', label: 'Contact' },
 ]
 
+const TITLE_ROTATION = ['Architect', 'Engineer', 'Leader']
+const ROTATION_INTERVAL_MS = 3500
+
 const scrollToSection = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 export default function ArchitectHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [titleIndex, setTitleIndex] = useState(0)
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -24,6 +28,13 @@ export default function ArchitectHeader() {
       document.body.style.overflow = ''
     }
   }, [menuOpen])
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTitleIndex((i) => (i + 1) % TITLE_ROTATION.length)
+    }, ROTATION_INTERVAL_MS)
+    return () => clearInterval(id)
+  }, [])
 
   const handleNavClick = (id: string) => {
     setMenuOpen(false)
@@ -37,16 +48,31 @@ export default function ArchitectHeader() {
         className="fixed top-0 left-0 w-full bg-[#fafafa]/90 backdrop-blur-sm z-50 transition-all duration-300 border-b border-transparent hover:border-gray-200"
       >
         <div className="max-w-[1920px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => handleNavClick('hero')}
-              className="w-8 h-8 bg-black flex items-center justify-center text-white font-bold text-sm"
+              className="w-8 h-8 shrink-0 bg-black flex items-center justify-center text-white font-bold text-sm rounded-sm"
             >
               NN
             </button>
-            <span className="font-mono text-xs tracking-wider uppercase hidden sm:block">
-              Software Architect
+            <span
+              className="font-mono text-xs tracking-wider uppercase hidden sm:flex sm:items-center h-8 overflow-hidden min-w-[11rem]"
+              aria-label={`Software ${TITLE_ROTATION[titleIndex]}`}
+            >
+              <span className="shrink-0">Software&nbsp;</span>
+              <span
+                className="inline-flex items-center overflow-hidden h-full"
+                style={{ perspective: '120px' }}
+              >
+                <span
+                  key={titleIndex}
+                  className="inline-block animate-flip-down origin-top"
+                  style={{ backfaceVisibility: 'hidden' }}
+                >
+                  {TITLE_ROTATION[titleIndex]}
+                </span>
+              </span>
             </span>
           </div>
 

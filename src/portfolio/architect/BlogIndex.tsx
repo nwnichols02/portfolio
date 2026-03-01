@@ -32,26 +32,42 @@ export default function BlogIndex() {
           <p className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-gray-500">
             Articles
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.slug}
-                to="/blog/$slug"
-                params={{ slug: post.slug }}
-                className="group rounded-2xl border border-gray-200 bg-white p-4 flex flex-col justify-between hover:-translate-y-0.5 hover:shadow-md transition-all"
-              >
-                <div className="space-y-2">
-                  <p className="text-[0.65rem] font-mono text-gray-500 uppercase tracking-[0.25em]">
-                    {post.category} · {post.year}
-                  </p>
-                  <h2 className="text-sm md:text-base font-semibold text-black group-hover:underline underline-offset-4">
-                    {post.title}
-                  </h2>
-                  <p className="text-xs text-gray-600 line-clamp-3">{post.tagline}</p>
-                </div>
-                <p className="mt-3 text-[0.65rem] font-mono text-gray-400">{post.readingTime}</p>
-              </Link>
-            ))}
+          {/* Bento grid: first post featured (tall, 2 rows), next 4 in 2×2, last post full width */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+            {BLOG_POSTS.map((post, index) => {
+              const isFeatured = index === 0
+              const isWide = index === BLOG_POSTS.length - 1
+              return (
+                <Link
+                  key={post.slug}
+                  to="/blog/$slug"
+                  params={{ slug: post.slug }}
+                  className={`group rounded-2xl border border-gray-200 bg-white p-4 md:p-5 flex flex-col justify-between hover:-translate-y-0.5 hover:shadow-md transition-all
+                    ${isFeatured ? 'md:row-span-2' : ''}
+                    ${isWide ? 'md:col-span-3' : ''}
+                  `}
+                >
+                  <div className="space-y-2 flex-1 flex flex-col">
+                    <p className="text-[0.65rem] font-mono text-gray-500 uppercase tracking-[0.25em]">
+                      {post.category} · {post.year}
+                    </p>
+                    <h2
+                      className={`font-semibold text-black group-hover:underline underline-offset-4 ${
+                        isFeatured ? 'text-base md:text-lg' : 'text-sm md:text-base'
+                      } ${isWide ? 'md:text-lg' : ''}`}
+                    >
+                      {post.title}
+                    </h2>
+                    <p
+                      className={`text-xs text-gray-600 flex-1 ${isFeatured ? 'line-clamp-4 md:line-clamp-none' : 'line-clamp-3'} ${isWide ? 'md:max-w-2xl' : ''}`}
+                    >
+                      {post.tagline}
+                    </p>
+                  </div>
+                  <p className="mt-3 text-[0.65rem] font-mono text-gray-400">{post.readingTime}</p>
+                </Link>
+              )
+            })}
           </div>
         </section>
       </main>

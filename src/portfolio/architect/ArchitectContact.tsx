@@ -1,5 +1,21 @@
 import { useState, useEffect } from 'react'
+import { Link } from '@tanstack/react-router'
 import { ArrowUp } from 'lucide-react'
+import { BLOG_POSTS } from './BlogPage'
+
+const SLUG_LABELS: Record<string, string> = {
+  'enterprise-mf-platform': 'Zero-Coupling MFEs',
+  'secure-sdlc-frontend': 'Secure SDLC',
+  'react-micro-loader': 'Offline-First',
+  'beginners-guide': "Beginner's Guide",
+  'technical-leadership': 'Technical Leadership',
+  'domain-driven-design': 'Domain-Driven Design',
+}
+
+const WRITING_LINKS = BLOG_POSTS.map((post) => ({
+  label: SLUG_LABELS[post.slug] ?? post.title,
+  slug: post.slug,
+}))
 
 export default function ArchitectContact() {
   const [currentTime, setCurrentTime] = useState('12:00 PM')
@@ -54,13 +70,20 @@ export default function ArchitectContact() {
           </div>
           <div>
             <h4 className="text-sm font-bold text-gray-300 mb-4 uppercase tracking-wider">
-              Services
+              Writing
             </h4>
             <ul className="space-y-2 text-sm text-gray-500">
-              <li>System Architecture</li>
-              <li>Microfrontend Consulting</li>
-              <li>Technical Leadership</li>
-              <li>Performance Auditing</li>
+              {WRITING_LINKS.map(({ label, slug }) => (
+                <li key={slug}>
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug }}
+                    className="hover:text-white transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

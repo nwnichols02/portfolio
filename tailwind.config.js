@@ -96,6 +96,11 @@ export default {
 					'0%, 100%': { opacity: '0.5' },
 					'50%': { opacity: '1' },
 				},
+				'flip-down': {
+					'0%': { transform: 'rotateX(-90deg)', opacity: '0' },
+					'50%': { opacity: '0.5' },
+					'100%': { transform: 'rotateX(0deg)', opacity: '1' },
+				},
 			},
 			animation: {
 				marquee: 'marquee var(--duration) infinite linear',
@@ -104,6 +109,7 @@ export default {
 				'weld-spark': 'spark 0.5s linear infinite',
 				'weld-glow': 'glow 2s ease-in-out infinite',
 				'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				'flip-down': 'flip-down 0.45s ease-out forwards',
 			}
 		}
 	},
