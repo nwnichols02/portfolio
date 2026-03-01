@@ -96,8 +96,7 @@ export function TerminalProvider({ children, zIndex = 45 }: TerminalProviderProp
               startOnView={false}
               isActive
               autoScroll
-              position={position}
-              onPositionChange={setPosition}
+              defaultPosition={position}
               onClose={closeTerminal}
               className="shadow-2xl"
             >

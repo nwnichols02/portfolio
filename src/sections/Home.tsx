@@ -2,8 +2,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import WeldingAnimation from '../components/WeldingAnimation'
 import "../styles/screenOverlay.css"
-import GradualSpacing from '@/components/ui/gradual-spacing'
-import WordPullUp from '@/components/ui/word-pull-up'
 
 const Home: React.FC = () => {
   return (

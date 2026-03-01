@@ -1,10 +1,7 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import BentoGrid from '../components/BentoGrid'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Carousel, CarouselIndicator, CarouselMainContainer, CarouselNext, CarouselPrevious, CarouselThumbsContainer, SliderMainItem } from '@/components/ui/carousel'
+import { Carousel, CarouselMainContainer, SliderMainItem } from '@/components/ui/carousel'
 import AutoScroll from "embla-carousel-auto-scroll";
 
 const projects = [

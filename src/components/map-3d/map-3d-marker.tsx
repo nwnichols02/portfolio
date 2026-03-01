@@ -29,9 +29,9 @@ export const Map3DMarker: React.FC<Map3DMarkerProps> = ({ position }) => {
   useEffect(() => {
     if (!marker) return;
 
-    const map3d = document.querySelector('gmp-map-3d') as google.maps.maps3d.Map3DElement;
-    if (map3d) {
-      marker.map = map3d.innerMap;
+    const map3d = document.querySelector('gmp-map-3d') as google.maps.maps3d.Map3DElement & { innerMap?: unknown };
+    if (map3d?.innerMap) {
+      marker.map = map3d.innerMap as google.maps.Map;
     }
   }, [marker]);
 

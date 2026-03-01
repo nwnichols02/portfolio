@@ -1,8 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import BentoGrid from '../components/BentoGrid'
 import IconCloud from '@/components/ui/icon-cloud'
-import Iphone15Pro from '@/components/ui/iphone-15-pro'
 
 const Skills: React.FC = () => {
 

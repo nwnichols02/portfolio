@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 // import { APIProvider, Map, AdvancedMarker } from '@vis.gl/react-google-maps';
-import { AdvancedMarker, APIProvider, MapMouseEvent } from '@vis.gl/react-google-maps';
+import { APIProvider, MapMouseEvent } from '@vis.gl/react-google-maps';
 // import { Marker3DElement } from '@vis.gl/react-google-maps';
 // import ControlPanel from './control-panel';
 // import {MiniMap} from './minimap';
@@ -94,18 +94,6 @@ const Globe: React.FC<GlobeProps> = () => {
     return <div>Loading map...</div>;
   }
 
-  const PinMarker: React.FC<{ scale?: number }> = ({ scale = 1 }) => (
-    <svg
-      width={54 * scale}
-      height={54 * scale}
-      viewBox="0 0 54 54"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="27" cy="27" r="26" fill="white" stroke="#4285F4" strokeWidth="2" />
-      <circle cx="27" cy="27" r="18" fill="#4285F4" />
-    </svg>
-  );
-
   return (
     <div className="w-full h-screen flex bg-black text-white">
       <div className="w-1/6 bg-black">
@@ -122,11 +110,7 @@ const Globe: React.FC<GlobeProps> = () => {
               {/* <AdvancedMarker position={userLocation}>
                 <PinMarker scale={0.5} />
               </AdvancedMarker> */}
-              <Map3DMarker
-                position={userLocation}
-                icon="/public/vite.svg"
-                draggable={true}
-              />
+              <Map3DMarker position={userLocation} />
               {/* {userLocation && <Map3DMarker position={userLocation} />} */}
             </Map3D>
             <MiniMap camera3dProps={viewProps} onMapClick={handleMapClick} />

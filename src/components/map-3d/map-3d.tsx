@@ -62,9 +62,9 @@ export const Map3D = forwardRef(
 
             const updateMap3D = () => {
                 Object.entries(map3dOptions).forEach(([key, value]) => {
-                    if (key !== 'children' && map3DElement[key] !== value) {
+                    if (key !== 'children' && (map3DElement as unknown as Record<string, unknown>)[key] !== value) {
                         try {
-                            map3DElement[key] = value;
+                            (map3DElement as unknown as Record<string, unknown>)[key] = value;
                         } catch (error) {
                             console.warn(`Failed to set ${key} on map3DElement:`, error);
                         }

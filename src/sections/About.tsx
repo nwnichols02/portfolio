@@ -51,19 +51,11 @@
 // export default About
 
 import React from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import Tweet from '../components/Tweet'
-import TweetCard from 'react-tweet-card'
-import { cn } from "@/lib/utils";
-import Marquee from "@/components/ui/marquee";
-import IconCloud from "@/components/ui/icon-cloud";
-import Meteors from '@/components/ui/meteors';
-
-
+import { motion, useScroll } from 'framer-motion'
+import Meteors from '@/components/ui/meteors'
 
 const About: React.FC = () => {
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+  useScroll()
 
 
 

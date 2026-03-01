@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import { useMemo } from 'react';
 import {Map, MapMouseEvent, useMap} from '@vis.gl/react-google-maps';
 
 import {useDebouncedEffect} from './util.hooks';

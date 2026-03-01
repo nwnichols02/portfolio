@@ -5,9 +5,9 @@ const BASE_FREQ = 14074.0
 export default function HamRadioSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const knobRef = useRef<HTMLDivElement>(null)
-  const [frequency, setFrequency] = useState(BASE_FREQ)
+  const [, setFrequency] = useState(BASE_FREQ)
   const [rotation, setRotation] = useState(0)
-  const [sliderValue, setSliderValue] = useState(14074)
+  const [, _setSliderValue] = useState(14074)
   const rotationRef = useRef(0)
 
   useEffect(() => {
@@ -104,12 +104,6 @@ export default function HamRadioSection() {
       window.removeEventListener('mouseup', onMouseUp)
     }
   }, [])
-
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = Number(e.target.value)
-    setSliderValue(val)
-    setFrequency(val / 1000)
-  }
 
   return (
     <section

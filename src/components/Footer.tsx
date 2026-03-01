@@ -1,15 +1,13 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 import Marquee from './ui/marquee'
-import HyperText from './ui/hyper-text'
 import WordFadeIn from './ui/word-fade-in'
 
 interface FooterProps {
-  scrollToSection: (index: number) => void
+  scrollToSection?: (index: number) => void
 }
 
-const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
-  const sections = ['home', 'about', 'projects', 'skills', 'experience', 'blog', 'contact']
+const Footer: React.FC<FooterProps> = () => {
 
   const reviews = [
     {

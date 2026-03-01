@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { Link } from '@tanstack/react-router'
 import { Code, Layers, Database } from 'lucide-react'
 import WeldingAnimation from '../components/WeldingAnimation'
-import AppBar from "../components/AppBar"
 
 const Home: React.FC = () => {
   return (
@@ -34,7 +33,7 @@ const Home: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              to="/projects"
+              to={"/projects" as never}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
             >
               View My Work
