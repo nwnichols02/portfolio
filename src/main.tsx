@@ -10,7 +10,7 @@ export function renderToDom(container: HTMLElement) {
 
   root.render(
     <StrictMode>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <App />
       </ThemeProvider>
     </StrictMode>
