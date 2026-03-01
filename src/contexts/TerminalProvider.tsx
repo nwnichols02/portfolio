@@ -4,40 +4,26 @@ import {
   createContext,
   useCallback,
   useContext,
-  useRef,
   useState,
   type ReactNode,
 } from 'react'
 import { TerminalWindow } from '@/components/ui/terminal'
 
-export interface TerminalInstance {
-  id: string
-  /** Inline content (used when opened with openTerminal). */
-  content?: ReactNode
-  /** Index into the contents batch (used when opened with openMultiple). Rendered content = contentsBatch[contentIndex]. */
-  contentIndex?: number
-  position?: React.CSSProperties
-  /** Called when this terminal is closed (before removing from list). Use for e.g. opening more terminals after a delay. */
+interface TerminalState {
+  content: ReactNode
   onClose?: () => void
 }
 
 interface TerminalContextValue {
-  /** Currently open terminals (read-only). */
-  terminals: TerminalInstance[]
-  /** Open a single terminal. Returns the terminal id. */
+  /** Open the terminal with the given content. Replaces any existing terminal. */
   openTerminal: (
     content: ReactNode,
-    position?: React.CSSProperties,
     options?: { onClose?: () => void }
-  ) => string
-  /** Open multiple terminals at once. Only one runs its sequence at a time; they take turns. */
-  openMultiple: (contents: ReactNode[], positions?: React.CSSProperties[]) => string[]
-  /** Close a terminal by id. Calls the terminal's onClose callback if set, then removes it. */
-  closeTerminal: (id: string) => void
-  /** Close all open terminals. */
-  closeAll: () => void
-  /** Whether any terminal is open (for hotkeys etc.). */
-  hasOpenTerminals: boolean
+  ) => void
+  /** Close the terminal. */
+  closeTerminal: () => void
+  /** Whether the terminal is open. */
+  isOpen: boolean
 }
 
 const TerminalContext = createContext<TerminalContextValue | null>(null)
@@ -56,96 +42,68 @@ export function useTerminalOptional() {
 
 interface TerminalProviderProps {
   children: ReactNode
-  /** z-index for the terminal overlay. */
   zIndex?: number
 }
 
+/** Approximate terminal size for centering (max-w-lg = 512px, max-h = 400px). */
+const TERMINAL_WIDTH = 512
+const TERMINAL_HEIGHT = 400
+
+function getCenteredPosition() {
+  if (typeof window === 'undefined') return { x: 0, y: 0 }
+  return {
+    x: (window.innerWidth - TERMINAL_WIDTH) / 2,
+    y: (window.innerHeight - TERMINAL_HEIGHT) / 2,
+  }
+}
+
 export function TerminalProvider({ children, zIndex = 45 }: TerminalProviderProps) {
-  const [terminals, setTerminals] = useState<TerminalInstance[]>([])
-  const [contentsBatch, setContentsBatch] = useState<ReactNode[]>([])
-  const idCounterRef = useRef(0)
+  const [terminal, setTerminal] = useState<TerminalState | null>(null)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
 
   const openTerminal = useCallback(
-    (
-      content: ReactNode,
-      position?: React.CSSProperties,
-      options?: { onClose?: () => void }
-    ) => {
-      const id = `terminal-${++idCounterRef.current}-${Date.now()}`
-      setTerminals((prev) => [...prev, { id, content, position, onClose: options?.onClose }])
-      return id
+    (content: ReactNode, options?: { onClose?: () => void }) => {
+      setPosition(getCenteredPosition())
+      setTerminal({ content, onClose: options?.onClose })
     },
     []
   )
 
-  const openMultiple = useCallback(
-    (contents: ReactNode[], positions?: React.CSSProperties[]) => {
-      const base = Date.now()
-      const newInstances: TerminalInstance[] = contents.map((_, i) => ({
-        id: `terminal-${++idCounterRef.current}-${base}-${i}`,
-        contentIndex: i,
-        position: positions?.[i],
-      }))
-      const ids = newInstances.map((t) => t.id)
-      setContentsBatch(contents)
-      setTerminals((prev) => [...prev, ...newInstances])
-      return ids
-    },
-    []
-  )
-
-  const closeTerminal = useCallback((id: string) => {
-    setTerminals((prev) => {
-      const terminal = prev.find((t) => t.id === id)
-      terminal?.onClose?.()
-      return prev.filter((t) => t.id !== id)
+  const closeTerminal = useCallback(() => {
+    setTerminal((prev) => {
+      prev?.onClose?.()
+      return null
     })
   }, [])
 
-  const closeAll = useCallback(() => {
-    setTerminals([])
-    setContentsBatch([])
-  }, [])
-
   const value: TerminalContextValue = {
-    terminals,
     openTerminal,
-    openMultiple,
     closeTerminal,
-    closeAll,
-    hasOpenTerminals: terminals.length > 0,
+    isOpen: terminal !== null,
   }
 
   return (
     <TerminalContext.Provider value={value}>
       {children}
-      {terminals.length > 0 && (
+      {terminal && (
         <div
           className="fixed inset-0 pointer-events-none"
           style={{ zIndex }}
         >
-          {terminals.map((terminal, index) => {
-            const content =
-              terminal.content ??
-              (terminal.contentIndex !== undefined ? contentsBatch[terminal.contentIndex] : null)
-            return (
-              <div
-                key={terminal.id}
-                className="absolute w-full max-w-md pointer-events-auto"
-                style={terminal.position}
-              >
-                <TerminalWindow
-                  key={terminal.id}
-                  startOnView={false}
-                  isActive
-                  onClose={() => closeTerminal(terminal.id)}
-                  className="shadow-2xl"
-                >
-                  {content}
-                </TerminalWindow>
-              </div>
-            )
-          })}
+          <div className="absolute inset-0 pointer-events-auto">
+            <TerminalWindow
+              key="single-terminal"
+              startOnView={false}
+              isActive
+              autoScroll
+              position={position}
+              onPositionChange={setPosition}
+              onClose={closeTerminal}
+              className="shadow-2xl"
+            >
+              {terminal.content}
+            </TerminalWindow>
+          </div>
         </div>
       )}
     </TerminalContext.Provider>

@@ -7,7 +7,7 @@ import { useTheme } from '@/contexts/ThemeProvider'
 const TEXT = 'Remember, all I\'m offering is the truth. Nothing more.'
 const CHAR_DELAY_MS = 80
 const CURSOR_HOLD_BEFORE_TYPING_MS = 3000
-const PILLS_DELAY_AFTER_TYPING_MS = 1000
+const PILLS_DELAY_AFTER_TYPING_MS = 2000
 
 type TruthIntroProps = {
   onDismiss?: (choice: 'light' | 'dark') => void
@@ -21,7 +21,7 @@ export default function TruthIntro({ onDismiss }: TruthIntroProps) {
   const [phase, setPhase] = useState<'cursor-only' | 'typing' | 'done'>('cursor-only')
   const [showPills, setShowPills] = useState(false)
 
-  // Pills fade in 1s after typing animation is finished
+  // Pills fade in 2s after typing animation is finished
   useEffect(() => {
     if (phase !== 'done') return
     const t = setTimeout(() => setShowPills(true), PILLS_DELAY_AFTER_TYPING_MS)

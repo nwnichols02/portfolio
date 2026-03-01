@@ -125,13 +125,13 @@ export default function ArchitectHeader({ onRequestOffline }: ArchitectHeaderPro
             <button
               type="button"
               onClick={handleStatusClick}
-              className="hidden md:flex items-center gap-2 text-xs font-mono text-gray-400 dark:text-gray-400 transition-colors cursor-pointer hover:opacity-80"
+              className="flex items-center gap-2 text-xs font-mono text-gray-400 dark:text-gray-400 transition-colors cursor-pointer hover:opacity-80"
               aria-label={isSystemOffline ? 'System offline – click to go online' : 'System online – click to go offline'}
             >
               <span
                 className={`w-2 h-2 rounded-full shrink-0 ${isSystemOffline ? 'bg-red-500' : 'bg-green-500 animate-pulse'}`}
               />
-              <span className={isSystemOffline ? 'text-red-500' : ''}>
+              <span className={`shrink-0 ${isSystemOffline ? 'text-red-500' : ''}`}>
                 {isSystemOffline ? 'SYSTEM OFFLINE' : 'SYSTEM ONLINE'}
               </span>
             </button>

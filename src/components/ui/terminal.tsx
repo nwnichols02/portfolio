@@ -179,6 +179,7 @@ export const TypingAnimation = ({
       if (i < children.length) {
         setDisplayedText(children.substring(0, i + 1))
         i++
+        scrollRef.current?.scrollToBottom()
       } else {
         clearInterval(typingEffect)
         scrollRef.current?.scrollToBottom()
@@ -215,14 +216,13 @@ export interface TerminalWindowProps {
   className?: string
   sequence?: boolean
   startOnView?: boolean
-  /** When false, this terminal's line-by-line sequence never starts (used by TerminalProvider to run one at a time). */
   isActive?: boolean
-  /** Delay in ms before this terminal's sequence starts. */
   startDelay?: number
-  /** Called when the user clicks the red close button. */
+  autoScroll?: boolean
   onClose?: () => void
-  /** Called when the last line in the sequence has finished (used by TerminalProvider to hand off to next terminal). */
   onSequenceComplete?: () => void
+  /** Initial drag position (e.g. centered). Uncontrolled drag – no re-renders while dragging. */
+  defaultPosition?: { x: number; y: number }
 }
 
 export const TerminalWindow = ({
@@ -232,37 +232,33 @@ export const TerminalWindow = ({
   startOnView = true,
   isActive = true,
   startDelay = 0,
+  autoScroll = true,
   onClose,
   onSequenceComplete,
+  defaultPosition = { x: 0, y: 0 },
 }: TerminalWindowProps) => {
   const draggableRef = useRef<HTMLDivElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const scrollContainerRef = useRef<HTMLPreElement | null>(null)
-  const mountedAtRef = useRef<number>(0)
   const scrollToBottom = useCallback(() => {
+    if (!autoScroll) return
     const el = scrollContainerRef.current
     if (!el) return
-    if (Date.now() - mountedAtRef.current < 400) return
-    el.scrollTo({
-      top: el.scrollHeight,
-      behavior: 'smooth',
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const current = scrollContainerRef.current
+        if (!current) return
+        const { scrollHeight, scrollTop, clientHeight } = current
+        const distanceFromBottom = scrollHeight - scrollTop - clientHeight
+        if (distanceFromBottom <= 80) {
+          current.scrollTop = current.scrollHeight
+        }
+      })
     })
-  }, [])
+  }, [autoScroll])
   const setScrollContainerRef = useCallback((el: HTMLPreElement | null) => {
     scrollContainerRef.current = el
-    if (el) {
-      el.scrollTop = 0
-      mountedAtRef.current = Date.now()
-    }
-  }, [])
-  useEffect(() => {
-    const el = scrollContainerRef.current
-    if (!el) return
-    el.scrollTop = 0
-    const t1 = setTimeout(() => { scrollContainerRef.current?.scrollTo({ top: 0 }) }, 0)
-    const t2 = setTimeout(() => { scrollContainerRef.current?.scrollTo({ top: 0 }) }, 50)
-    const t3 = setTimeout(() => { scrollContainerRef.current?.scrollTo({ top: 0 }) }, 150)
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
+    if (el) el.scrollTop = 0
   }, [])
   const isInView = useInView(containerRef as React.RefObject<Element>, {
     amount: 0.3,
@@ -318,11 +314,11 @@ export const TerminalWindow = ({
       nodeRef={draggableRef}
       handle=".terminal-title-bar"
       bounds="parent"
-      defaultPosition={{ x: 0, y: 0 }}
+      defaultPosition={defaultPosition}
     >
       <div
         ref={draggableRef}
-        className="inline-block h-full max-h-[400px] w-full max-w-lg"
+        className="absolute left-0 top-0 w-full max-w-lg max-h-[400px]"
       >
         <motion.div
           ref={containerRef}
@@ -350,7 +346,8 @@ export const TerminalWindow = ({
             if (isClosing) onClose?.()
           }}
           className={cn(
-            'terminal-window z-0 flex h-full max-h-[400px] w-full flex-col overflow-hidden rounded-xl border border-gray-700 bg-[#0a0a0a]',
+            'terminal-window z-0 flex h-full w-full flex-col overflow-hidden rounded-xl border border-gray-700 bg-[#0a0a0a]',
+            'max-h-[400px]',
             className
           )}
         >
@@ -417,5 +414,5 @@ export const TerminalWindow = ({
   )
 }
 
-/** Alias for TerminalWindow when not using TerminalProvider. */
+/** Alias for TerminalWindow. */
 export const Terminal = TerminalWindow
