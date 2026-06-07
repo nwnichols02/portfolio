@@ -15,6 +15,17 @@ import {
 
 const PROJECTS = [
   {
+    slug: 'melon-series-intro',
+    tag: 'MELON',
+    title: 'Building Melon: Twelve Lessons from an Offline-First Database Stack',
+    description:
+      'I spent a year building Melon — twelve packages, thirty-four phases, and an alpha on npm. This series is what I wish I had known before I started.',
+    year: '2026',
+    image:
+      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2072&auto=format&fit=crop',
+    alt: 'Code editor and local-first database architecture',
+  },
+  {
     slug: 'enterprise-mf-platform',
     tag: 'FEDERATION',
     title: 'Vite, Module Federation, and Zero‑Coupling Architecture for Enterprise Frontends',
@@ -47,6 +58,17 @@ const PROJECTS = [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2072&auto=format&fit=crop',
     alt: 'Local data and sync: offline-first architecture',
   },
+  {
+    slug: 'melon-open-source-release',
+    tag: 'MELON',
+    title: 'Phase 34 Was Not "Flip the Repo Public" — It Was Release Engineering',
+    description:
+      'Monorepo green does not mean npm green. Publishing twelve @melon-db packages required tarball smoke tests, export validation, CI gates, and alpha policy.',
+    year: '2026',
+    image:
+      'https://images.unsplash.com/photo-1618477388954-7852f72535a8?q=80&w=2072&auto=format&fit=crop',
+    alt: 'Release engineering and package publishing pipeline',
+  },
 ]
 
 const TECH_ICONS = [
@@ -78,7 +100,7 @@ export default function ArchitectureSection() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
         {PROJECTS.map((project) => (
           <Link
             key={project.title}

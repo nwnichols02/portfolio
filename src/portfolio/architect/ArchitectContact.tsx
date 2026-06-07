@@ -4,6 +4,7 @@ import { ArrowUp } from 'lucide-react'
 import { BLOG_POSTS } from './BlogPage'
 
 const SLUG_LABELS: Record<string, string> = {
+  'melon-series-intro': 'Melon Series',
   'enterprise-mf-platform': 'Zero-Coupling MFEs',
   'secure-sdlc-frontend': 'Secure SDLC',
   'react-micro-loader': 'Offline-First',
@@ -12,10 +13,20 @@ const SLUG_LABELS: Record<string, string> = {
   'domain-driven-design': 'Domain-Driven Design',
 }
 
-const WRITING_LINKS = BLOG_POSTS.map((post) => ({
-  label: SLUG_LABELS[post.slug] ?? post.title,
-  slug: post.slug,
-}))
+const FEATURED_WRITING_SLUGS = [
+  'melon-series-intro',
+  'react-micro-loader',
+  'enterprise-mf-platform',
+  'technical-leadership',
+] as const
+
+const WRITING_LINKS = FEATURED_WRITING_SLUGS.map((slug) => {
+  const post = BLOG_POSTS.find((p) => p.slug === slug)
+  return {
+    label: SLUG_LABELS[slug] ?? post?.title ?? slug,
+    slug,
+  }
+})
 
 export default function ArchitectContact() {
   const [currentTime, setCurrentTime] = useState('12:00 PM')
@@ -84,6 +95,11 @@ export default function ArchitectContact() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/blog" className="hover:text-white transition-colors">
+                  See all →
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
