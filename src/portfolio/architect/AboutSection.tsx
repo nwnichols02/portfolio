@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router'
+
 const EXPERIENCE = [
   {
     role: 'Senior Web Application Developer @ UtiliSource',
@@ -48,10 +50,40 @@ export default function AboutSection() {
                   a balance between form, function and meaning. I create products characterized by
                   their own formal and aesthetic identity.
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 mb-12 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
                   With over 4 years of experience in full-stack development, I&apos;ve transitioned
                   into high-level architecture. I don&apos;t just write code; I design systems that
                   scale, endure, and perform in the AI era.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 mb-12 text-sm leading-relaxed">
+                  I also work in the offline-first space — local databases as the source of truth for
+                  UX, sync as reconciliation, not a prerequisite for saving. I built{' '}
+                  <a
+                    href="https://github.com/nwnichols02/melon-db"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-[0.5px] hover:text-black dark:hover:text-white"
+                  >
+                    Melon-db
+                  </a>
+                  , a modular TypeScript stack for React Native: AST-first queries, SQLite adapters,
+                  and optional Watermelon-compatible sync. Read the{' '}
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug: 'melon-series-intro' }}
+                    className="text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-[0.5px] hover:text-black dark:hover:text-white"
+                  >
+                    twelve-lesson series
+                  </Link>{' '}
+                  or the{' '}
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug: 'react-micro-loader' }}
+                    className="text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-[0.5px] hover:text-black dark:hover:text-white"
+                  >
+                    offline-first essay
+                  </Link>{' '}
+                  for the architecture behind it.
                 </p>
               </div>
 
